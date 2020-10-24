@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const AsideTag = styled.aside`
+  background: #f7f7f7;
   font-weight: bold;
   padding: 16px 24px;
   text-decoration: underline;
