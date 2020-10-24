@@ -1,3 +1,5 @@
+// redux 설정을 시도하기 위한 dummy입니다
+
 import { createStore } from 'redux';
 
 const 액션테스트 = '액션테스트';
