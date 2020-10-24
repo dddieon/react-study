@@ -1,33 +1,111 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { RiZoomInLine } from 'react-icons/ri';
+import '../../assets/image/background.jpg';
 
+// boarding 관련
+const Board = styled.div`
+  position: relative;
+  padding-top: 133%;
+  @media screen and (min-width: 744px) {
+    padding-top: 100%;
+  }
+  @media (min-width: 950px) {
+    padding-top: max(550px, min(85vh, 56.25%));
+  }
+`;
+const BoardBackground = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #222;
+  z-index: -100;
+`;
+const BoardContent = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  header {
+    color: white;
+    text-align: center;
+    @media screen and (min-width: 744px) {
+      padding-top: 186px;
+    }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+    p {
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+  }
+`;
+// factory 관련
+const MobileLabel = styled.label`
+  display: flex;
+  width: 100%;
+`;
+const MobileInput = styled.input`
+  flex: 1;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  background: none;
+  border: 0px;
+  color: #222222;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  text-overflow: ellipsis;
+  cursor: text;
+`;
+
+const MobileFactory = styled.div`
+  padding: 24px;
+  form {
+    width: 100%;
+    padding: 10px;
+    background: #fefefe;
+    border-radius: 24px;
+  }
+`;
 const Main = () => {
   return (
     <main>
-      <header className="header__mobile">
-        <label for="header__mobile-serchbar">
-          <i>아이콘</i>
-          <input
-            type="text"
-            placeholder="어디로 여행 가세요?"
-            autocorrect="off"
-            id="header__mobile-serchbar"
-          />
-        </label>
-      </header>
-      <div style={{ position: 'relative' }}>
-        <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
-          background용
-        </div>
-        <div>
-          <h1>이제, 여행은 가까운 곳에서.</h1>
-          <span>
-            새로운 곳에서 머물러보세요. 직접 살아보거나, 업무를 보거나, 휴식할
-            수 있는 가까운 숙소를 찾아보세요.
-          </span>
-          <Link to="/detail">가까운 여행지 둘러보기</Link>
-        </div>
-      </div>
+      <Board className="board">
+        <BoardBackground className="board__background"></BoardBackground>
+        <BoardContent className="board__content">
+          <MobileFactory className="mobile-factory">
+            <form action="/detail">
+              <MobileLabel for="mobile-factory--input">
+                <button type="submit">
+                  <RiZoomInLine />
+                </button>
+                <MobileInput
+                  type="text"
+                  placeholder="어디로 여행 가세요?"
+                  autocorrect="off"
+                  id="mobile-factory--input"
+                />
+              </MobileLabel>
+            </form>
+          </MobileFactory>
+          <header>
+            <h1>이제, 여행은 가까운 곳에서.</h1>
+            <p>
+              새로운 곳에서 머물러보세요. 직접 살아보거나, 업무를 보거나, 휴식할
+              수 있는 가까운 숙소를 찾아보세요.
+            </p>
+            <Link to="/detail">가까운 여행지 둘러보기</Link>
+          </header>
+        </BoardContent>
+      </Board>
       <div className="image-slider--main" style={{ scrollPadding: '0px 24px' }}>
         <div>
           <div>독특한 공간</div>
