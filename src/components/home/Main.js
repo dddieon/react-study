@@ -75,6 +75,17 @@ const MobileFactory = styled.div`
     border-radius: 24px;
   }
 `;
+
+// button
+
+const RoundedButton = styled(Link)`
+  font-size: 14px;
+  color: #222;
+  background: #eee;
+  padding: 8px 16px;
+  border-radius: 8px;
+`;
+
 const Main = () => {
   return (
     <main>
@@ -83,13 +94,16 @@ const Main = () => {
         <BoardContent className="board__content">
           <MobileFactory className="mobile-factory">
             <form action="/detail">
-              <MobileLabel for="mobile-factory--input">
+              <MobileLabel htmlFor="mobile-factory--input">
                 <button type="submit">
-                  <RiZoomInLine />
+                  <RiZoomInLine
+                    style={{ display: 'block', fontSize: 20, margin: '0 12px' }}
+                  />
                 </button>
                 <MobileInput
                   type="text"
                   placeholder="어디로 여행 가세요?"
+                  autoComplete="off"
                   autocorrect="off"
                   id="mobile-factory--input"
                 />
@@ -102,7 +116,7 @@ const Main = () => {
               새로운 곳에서 머물러보세요. 직접 살아보거나, 업무를 보거나, 휴식할
               수 있는 가까운 숙소를 찾아보세요.
             </p>
-            <Link to="/detail">가까운 여행지 둘러보기</Link>
+            <RoundedButton to="/detail">가까운 여행지 둘러보기</RoundedButton>
           </header>
         </BoardContent>
       </Board>
