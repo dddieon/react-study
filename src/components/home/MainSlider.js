@@ -20,7 +20,7 @@ const MainContainer = styled.div`
     }
     margin: 8px;
     border-radius: 16px;
-    overflow: hidden;
+    overflow: scroll;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
     img {
       display: block;
