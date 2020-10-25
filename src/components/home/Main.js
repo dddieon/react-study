@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { RiZoomInLine } from 'react-icons/ri';
+import mobileBackgroundImage from '../../assets/image/background-mobile.png';
 import backgroundImage from '../../assets/image/background.jpg';
+import MainSlider from './MainSlider';
 
-// boarding 관련
+// boarding 관련 컴포넌트
 const Board = styled.div`
   position: relative;
   padding-top: 133%;
@@ -23,11 +25,14 @@ const BoardBackground = styled.div`
   right: 0;
   vertical-align: bottom;
   min-height: 1px;
-  background-image: url(${backgroundImage});
-  background-position: 60% 50%;
+  background-image: url(${mobileBackgroundImage});
+  background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
   z-index: -100;
+  @media (min-width: 744px) {
+    background-image: url(${backgroundImage});
+  }
 `;
 const BoardContent = styled.div`
   position: absolute;
@@ -75,7 +80,7 @@ const BoardContent = styled.div`
     }
   }
 `;
-// factory 관련
+// Form 관련 컴포넌트
 const MobileLabel = styled.label`
   display: flex;
   width: 100%;
@@ -105,7 +110,7 @@ const MobileFactory = styled.div`
   }
 `;
 
-// button
+// 버튼 컴포넌트
 const RoundedButton = styled(Link)`
   font-size: 14px;
   font-weight: 600;
@@ -122,7 +127,7 @@ const Main = () => {
         <BoardBackground className="board__background"></BoardBackground>
         <BoardContent className="board__content">
           <MobileFactory className="mobile-factory">
-            <form action="/detail">
+            <form action="/s/all">
               <MobileLabel htmlFor="mobile-factory--input">
                 <button type="submit">
                   <RiZoomInLine
@@ -149,22 +154,7 @@ const Main = () => {
           </header>
         </BoardContent>
       </Board>
-      <div className="image-slider--main" style={{ scrollPadding: '0px 24px' }}>
-        <div>
-          <div>독특한 공간</div>
-          <p>단순한 숙소 이상의 특별함이 담긴 공간</p>
-        </div>
-        <div>
-          <div>온라인 체험</div>
-          <p>모두가 함께 즐기는 세계 각지의 독특한 체험</p>
-        </div>
-        <div>
-          <div>집 전체</div>
-          <p>
-            일행만을 위한 편안한 공간에서 친구 및 가족과 오붓한 시간을 보내세요.
-          </p>
-        </div>
-      </div>
+      <MainSlider />
       <div className="image-slider--sub">
         <div>
           <h2>온라인 체험</h2>
