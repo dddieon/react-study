@@ -2,18 +2,18 @@
 
 import { createStore } from 'redux';
 
-const 액션테스트 = '액션테스트';
+const play = 'play';
 
-export const 액션함수 = text => {
+export const doIt = text => {
   return {
-    type: 액션테스트,
+    type: play,
     text,
   };
 };
 
 const reducer = (state = [], action) => {
   switch (action.type) {
-    case 액션테스트:
+    case play:
       return [{ text: action.text, ...state }];
     default:
       return state;
