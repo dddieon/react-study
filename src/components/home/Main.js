@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { RiZoomInLine } from 'react-icons/ri';
 import mobileBackgroundImage from '../../assets/image/background-mobile.png';
 import backgroundImage from '../../assets/image/background.jpg';
-import MainSlider from './MainSlider';
+import MainSlider from '../../containers/MainSlider';
 
 // boarding 관련 컴포넌트
 const Board = styled.div`
