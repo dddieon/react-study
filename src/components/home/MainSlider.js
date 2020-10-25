@@ -20,7 +20,7 @@ const MainContainer = styled.div`
     }
     margin: 8px;
     border-radius: 16px;
-    overflow: scroll;
+    overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
     img {
       display: block;
@@ -40,7 +40,7 @@ const MainContainer = styled.div`
 `;
 function MainSlider() {
   return (
-    <div style={{ width: '100%', overflow: 'hidden' }}>
+    <div style={{ width: '100%', overflow: 'auto' }}>
       <MainContainer className="images__main">
         <Link to="/detail">
           <img
