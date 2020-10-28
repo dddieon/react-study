@@ -5,6 +5,8 @@ import { RiZoomInLine } from 'react-icons/ri';
 import mobileBackgroundImage from '../../assets/image/background-mobile.png';
 import backgroundImage from '../../assets/image/background.jpg';
 import MainSlider from '../../containers/MainSlider';
+// 반응형을 위한 media모듈
+import media from '../../util/media';
 
 // boarding 관련 컴포넌트
 const Board = styled.div`
