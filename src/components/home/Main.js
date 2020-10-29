@@ -6,18 +6,14 @@ import mobileBackgroundImage from '../../assets/image/background-mobile.png';
 import backgroundImage from '../../assets/image/background.jpg';
 import MainSlider from '../../containers/MainSlider';
 // 반응형을 위한 media모듈
-import media from '../../util/media';
+import { media } from '../../util/media';
 
-// boarding 관련 컴포넌트
+// board 컴포넌트
 const Board = styled.div`
   position: relative;
   padding-top: 133%;
-  @media (min-width: 744px) {
-    padding-top: 100%;
-  }
-  @media (min-width: 950px) {
-    padding-top: max(550px, min(85vh, 56.25%));
-  }
+  ${media.tablet`padding-top: 100%;`}
+  ${media.pc`padding-top:max(550px, min(85vh, 56.25%));`}
 `;
 const BoardBackground = styled.div`
   position: absolute;
@@ -32,9 +28,7 @@ const BoardBackground = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   z-index: -100;
-  @media (min-width: 744px) {
-    background-image: url(${backgroundImage});
-  }
+  ${media.tablet`background-image: url(${backgroundImage});`}
 `;
 const BoardContent = styled.div`
   position: absolute;
@@ -43,42 +37,26 @@ const BoardContent = styled.div`
   left: 0;
   right: 0;
   padding: 16px;
-  @media (min-width: 744px) {
-    padding-top: 48px;
-    padding-left: 48px;
-    padding-right: 48px;
-  }
-  @media (min-width: 1128px) {
-    padding-left: 80px;
-    padding-right: 80px;
-  }
+  ${media.tablet` padding-top: 48px; padding-left: 48px padding-right: 48px;`}
+  ${media.pc` padding-top:padding-left: 80px; padding-right: 80px;`}
   header {
     color: white;
     text-align: center;
-    @media (min-width: 744px) {
-      width: 300px;
-      padding-top: 186px;
-      text-align: left;
-    }
-    @media (min-width: 950px) {
-      padding-top: 102px;
-    }
+    ${media.tablet`width: 300px; padding-top: 186px; text-align: left;`}
+    ${media.pcSub` padding-top: 102px;`}
+
     h1 {
       font-size: 26px;
       margin-bottom: 8px;
       line-height: 32px;
-      @media (min-width: 744px) {
-        font-size: 32px;
-      }
+      ${media.tablet` font-size: 32px;`}
     }
     p {
       font-size: 12px;
       font-weight: 600;
       margin-bottom: 16px;
       line-height: 18px;
-      @media (min-width: 744px) {
-        font-size: 14px;
-      }
+      ${media.tablet` font-size: 14px;`}
     }
   }
 `;
