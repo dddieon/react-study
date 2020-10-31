@@ -14,11 +14,10 @@ const SliderBox = ({ src, image, className, title, desc }) => {
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
     img {
       display: block;
-      width: 100%;
     }
-    .images__main--desc {
+    div {
       padding: 12px 16px 16px;
-      div {
+      p.title {
         font-size: 18px;
         font-weight: 600;
       }
@@ -32,7 +31,7 @@ const SliderBox = ({ src, image, className, title, desc }) => {
       <Box to={src}>
         <img src={image} alt="설명"></img>
         <div className={className}>
-          <div>{title}</div>
+          <p className="title">{title}</p>
           <p>{desc}</p>
         </div>
       </Box>

@@ -1,11 +1,14 @@
+// dependency
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { RiZoomInLine } from 'react-icons/ri';
+// components
 import mobileBackgroundImage from '../../assets/image/background-mobile.png';
 import backgroundImage from '../../assets/image/background.jpg';
 import MainSlider from '../../containers/MainSlider';
-// 반응형을 위한 media모듈
+import SubSlider from '../../containers/SubSlider';
+// modules
 import { media } from '../../util/media';
 
 // board 컴포넌트
@@ -37,8 +40,8 @@ const BoardContent = styled.div`
   left: 0;
   right: 0;
   padding: 16px;
-  ${media.tablet` padding-top: 48px; padding-left: 48px padding-right: 48px;`}
-  ${media.pc` padding-top:padding-left: 80px; padding-right: 80px;`}
+  ${media.tablet` padding-top: 48px; padding-left: 48px; padding-right: 48px;`}
+  ${media.pc` padding-top:146px; padding-left: 80px; padding-right: 80px;`}
   header {
     color: white;
     text-align: center;
@@ -134,17 +137,10 @@ const Main = () => {
           </header>
         </BoardContent>
       </Board>
+      {/* 슬라이더 1 */}
       <MainSlider />
-      <div className="image-slider--sub">
-        <div>
-          <h2>온라인 체험</h2>
-          <p>
-            세계 각지의 사람들을 만나 새로운 경험을 해보세요. 개성 있는 호스트가
-            진행하는 실시간 영상 세션을 통해 이제 집에서도 안전하게 체험을
-            즐기실 수 있습니다.
-          </p>
-        </div>
-      </div>
+      {/* 슬라이더 2 */}
+      <SubSlider />
     </main>
   );
 };
