@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const SliderBox = ({ src, image, className, title, desc }) => {
-  const Box = styled.a`
+  const Box = styled(Link)`
     display: block;
     width: 272px;
     @media (min-width: 950px) {

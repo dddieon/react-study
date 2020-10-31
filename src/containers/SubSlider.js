@@ -12,8 +12,8 @@ const ContainerWrapper = styled.div`
   padding: 32px 24px 40px;
   .texts__sub {
     padding: 24px 8px;
-    ${media.tablet`padding:48px 8px 64px`}
-    ${media.pc`padding:64px 8px 80px`}
+    ${media.tablet`padding:48px 8px 64px;`}
+    ${media.pc`padding:64px 8px 80px;`}
   }
 `;
 const MainContainer = styled.div`
@@ -43,11 +43,7 @@ function SubSlider() {
     <ContainerWrapper>
       <div className="texts__sub">
         <h2>온라인 체험</h2>
-        <p>
-          세계 각지의 사람들을 만나 새로운 경험을 해보세요. 개성 있는 호스트가
-          진행하는 실시간 영상 세션을 통해 이제 집에서도 안전하게 체험을 즐기실
-          수 있습니다.
-        </p>
+        <p>전문가가 진행하고 모두 함께 즐기는 참여형 액티비티</p>
       </div>
       <MainContainer className="images__sub">
         <SliderBox

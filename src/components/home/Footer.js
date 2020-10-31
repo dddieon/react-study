@@ -1,9 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+const FooterContainer = styled.footer`
+  background-color: #f7f7f7;
+  border-top: 1px solid #dddddd;
+`;
 
 const Footer = () => {
   return (
-    <footer>
+    <FooterContainer>
       <div>
         <section>
           <h4>소개</h4>
@@ -146,7 +152,7 @@ const Footer = () => {
           </ul>
         </section>
       </div>
-    </footer>
+    </FooterContainer>
   );
 };
 
