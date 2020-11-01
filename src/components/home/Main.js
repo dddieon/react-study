@@ -1,6 +1,5 @@
 // dependency
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 // components
@@ -10,6 +9,7 @@ import MainSlider from '../../containers/MainSlider';
 import SubSlider from '../../containers/SubSlider';
 import PcFactory from '../../containers/factory/PcFactory';
 import MobileFactory from '../../containers/factory/MobileFactory';
+import RoundedButton from '../module/RoundButton';
 
 // modules
 import { media } from '../../util/media';
@@ -66,16 +66,6 @@ const BoardContent = styled.div`
       ${media.tablet` font-size: 14px;`}
     }
   }
-`;
-
-// 버튼 컴포넌트
-const RoundedButton = styled(Link)`
-  font-size: 14px;
-  font-weight: 600;
-  color: #222;
-  background: #eee;
-  padding: 8px 16px;
-  border-radius: 8px;
 `;
 
 const Main = () => {

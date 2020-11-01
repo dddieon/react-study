@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { RiZoomInLine } from 'react-icons/ri';
 
-export const PcFactoryContainer = styled.div`
+const PcFactoryContainer = styled.div`
   display: none;
   background: #fefefe;
   border-radius: 34px;
@@ -10,6 +10,7 @@ export const PcFactoryContainer = styled.div`
   margin: 0 auto;
   padding: 10px;
   font-size: 14px;
+  position: relative;
   form {
     display: flex;
     div {
@@ -18,14 +19,38 @@ export const PcFactoryContainer = styled.div`
   }
 `;
 
-export const PcInput = styled.input``;
+const PcInput = styled.input``;
 
-export const PcLabel = styled.label``;
+const PcLabel = styled.label``;
+
+const Calander = styled.div`
+  display: block;
+  position: absolute;
+  background: #fff;
+  width: 100%;
+  padding: 20px;
+  left: 0;
+  top: 100%;
+  margin-top: 12px;
+  border-radius: 32px;
+`;
 
 export default function PcFactory() {
+  const [visibleCalander, SetVisibleCalander] = useState(false);
+  const onClick = event => {
+    const {
+      target: { name },
+    } = event;
+    if (name === 'openCalander') {
+      SetVisibleCalander(true);
+    } else {
+      SetVisibleCalander(false);
+      console.log(event.target);
+    }
+  };
   return (
-    <PcFactoryContainer className="pc-factory">
-      <form action="/s/all">
+    <PcFactoryContainer className="pc-factory" onClick={onClick}>
+      <form action="/s/all" className="pc-form">
         <div style={{ paddingLeft: 16 }}>
           <PcLabel htmlFor="pc-factory--input_1">
             <div>위치</div>
@@ -47,6 +72,7 @@ export default function PcFactory() {
               autoComplete="off"
               autocorrect="off"
               id="pc-factory--input_2"
+              name="openCalander"
             />
           </PcLabel>
         </div>
@@ -59,6 +85,7 @@ export default function PcFactory() {
               autoComplete="off"
               autocorrect="off"
               id="pc-factory--input_3"
+              name="openCalander"
             />
           </PcLabel>
         </div>
@@ -87,6 +114,7 @@ export default function PcFactory() {
           </button>
         </div>
       </form>
+      {visibleCalander && <Calander className="calander">달력</Calander>}
     </PcFactoryContainer>
   );
 }
