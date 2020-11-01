@@ -5,8 +5,8 @@ import styled from 'styled-components';
 // components
 import mobileBackgroundImage from '../../assets/image/background-mobile.png';
 import backgroundImage from '../../assets/image/background.jpg';
-import MainSlider from '../../containers/MainSlider';
-import SubSlider from '../../containers/SubSlider';
+import MainSlider from '../../containers/slider/MainSlider';
+import SubSlider from '../../containers/slider/SubSlider';
 import PcFactory from '../../containers/factory/PcFactory';
 import MobileFactory from '../../containers/factory/MobileFactory';
 import RoundedButton from '../module/RoundButton';

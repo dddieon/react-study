@@ -19,7 +19,9 @@ const PcFactoryContainer = styled.div`
   }
 `;
 
-const PcInput = styled.input``;
+const PcInput = styled.input`
+  cursor: pointer;
+`;
 
 const PcLabel = styled.label``;
 
@@ -90,7 +92,7 @@ export default function PcFactory() {
           </PcLabel>
         </div>
         <div style={{ display: 'flex' }}>
-          <PcLabel htmlFor="pc-factory--input_4">
+          <PcLabel htmlFor="pc-factory--input_4" style={{ flex: 1 }}>
             <div>인원</div>
             <PcInput
               type="text"
@@ -98,6 +100,7 @@ export default function PcFactory() {
               autoComplete="off"
               autocorrect="off"
               id="pc-factory--input_4"
+              size={8}
             />
           </PcLabel>
           <button type="submit">

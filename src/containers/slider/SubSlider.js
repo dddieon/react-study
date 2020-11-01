@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import SliderBox from './SliderBox';
 // modules
-import { media } from '../util/media';
+import { media } from '../../util/media';
 
 const ContainerWrapper = styled.div`
   width: 100%;
