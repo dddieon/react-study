@@ -1,10 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+// modules
+import { media } from '../../util/media';
 
 const FooterContainer = styled.footer`
-  background-color: #f7f7f7;
   border-top: 1px solid #dddddd;
+  background-color: #f7f7f7;
+  font-size: 14px;
+  div {
+    width: 100%;
+    ${media.pcSub`padding: 0 40px;`}
+    ${media.pc`display: flex; justify-content: center; padding: 0 80px;`}
+    section {
+      border-top: 1px solid #dddddd;
+      flex: 1;
+      padding: 24px;
+      li {
+        margin-top: 16px;
+        a {
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
 `;
 
 const Footer = () => {
@@ -134,21 +155,31 @@ const Footer = () => {
         <section>
           <h4>에어비앤비 지원</h4>
           <ul>
-            <Link to="/detail" className="_o06542u">
-              에어비앤비의 코로나19 대응 방안
-            </Link>
-            <Link to="/detail" className="_o06542u">
-              도움말 센터
-            </Link>
-            <Link to="/detail" className="_o06542u">
-              예약 취소 옵션
-            </Link>
-            <Link to="/detail" className="_o06542u">
-              에어비앤비 이웃 민원 지원
-            </Link>
-            <Link to="/detail" className="_o06542u">
-              신뢰와 안전
-            </Link>
+            <li>
+              <Link to="/detail" className="_o06542u">
+                에어비앤비의 코로나19 대응 방안
+              </Link>
+            </li>
+            <li>
+              <Link to="/detail" className="_o06542u">
+                도움말 센터
+              </Link>
+            </li>
+            <li>
+              <Link to="/detail" className="_o06542u">
+                예약 취소 옵션
+              </Link>
+            </li>
+            <li>
+              <Link to="/detail" className="_o06542u">
+                에어비앤비 이웃 민원 지원
+              </Link>
+            </li>
+            <li>
+              <Link to="/detail" className="_o06542u">
+                신뢰와 안전
+              </Link>
+            </li>
           </ul>
         </section>
       </div>
