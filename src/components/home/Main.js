@@ -44,7 +44,8 @@ const BoardContent = styled.div`
   right: 0;
   padding: 16px;
   ${media.tablet` padding-top: 48px; padding-left: 48px; padding-right: 48px; .mobile-factory{display:none;} .pc-factory{display:block}`}
-  ${media.pc` padding-top:146px; padding-left: 80px; padding-right: 80px;`}
+  ${media.pcSub` padding-top:146px; padding-left: 80px; padding-right: 80px;`}
+  ${media.pc`padding-left: 146px; padding-right: 146px;`}
   header {
     color: white;
     text-align: center;
