@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { RiZoomInLine } from 'react-icons/ri';
-import SlickData from '../../util/data/mock';
 import MobileFactoryContainer from './MobileFactoryContainer';
 import MobileInput from './MobileInput';
 import MobileLabel from './MobileLabel';
+import { useHistory } from 'react-router-dom';
 
 const useInput = initalValue => {
   const [value, setValue] = useState(initalValue);
@@ -18,21 +18,19 @@ const useInput = initalValue => {
 };
 
 export default function MobileFactory() {
-  const [dummy, setDummy] = useState([]);
-  const getData = e => {
-    e.preventDefault();
-    fetch(SlickData)
-      .then(res => setDummy(res))
-      .then(console.log(dummy));
-  };
   const inputValue = useInput('');
+  const history = useHistory();
+  const onSubmit = e => {
+    alert(`${inputValue.value}를 검색합니다`);
+    e.preventDefault();
+    history.push({
+      pathname: `/s/${inputValue.value}/homes`,
+      search: '?checkin=2020-11-12&checkout=2020-11-13&adults=2',
+    });
+  };
   return (
     <MobileFactoryContainer className="mobile-factory">
-      <form
-        action="https://www.airbnb.co.kr/s/"
-        method="POST"
-        onSubmit={getData}
-      >
+      <form action="/s/all" method="get" role="search" onSubmit={onSubmit}>
         <MobileLabel htmlFor="mobile-factory--input">
           <button type="submit">
             <RiZoomInLine
@@ -44,8 +42,8 @@ export default function MobileFactory() {
             placeholder="어디로 여행 가세요?"
             autoComplete="off"
             autocorrect="off"
+            name="query"
             id="mobile-factory--input"
-            onChange={useInput}
             value={inputValue.value}
             onChange={inputValue.onChange}
           />
