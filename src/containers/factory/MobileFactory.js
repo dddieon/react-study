@@ -1,41 +1,38 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
 import { RiZoomInLine } from 'react-icons/ri';
+import SlickData from '../../util/data/mock';
+import MobileFactoryContainer from './MobileFactoryContainer';
+import MobileInput from './MobileInput';
+import MobileLabel from './MobileLabel';
 
-export const MobileFactoryContainer = styled.div`
-  padding-bottom: 16px;
-  form {
-    width: 100%;
-    padding: 10px;
-    background: #fefefe;
-    border-radius: 24px;
-  }
-`;
-
-export const MobileInput = styled.input`
-  flex: 1;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 400;
-  background: none;
-  border: 0px;
-  color: #222222;
-  margin: 0px;
-  padding: 0px;
-  width: 100%;
-  text-overflow: ellipsis;
-  cursor: text;
-`;
-
-export const MobileLabel = styled.label`
-  display: flex;
-  width: 100%;
-`;
+const useInput = initalValue => {
+  const [value, setValue] = useState(initalValue);
+  const onChange = e => {
+    const {
+      target: { value },
+    } = e;
+    setValue(value);
+    console.log(value);
+  };
+  return { value, onChange };
+};
 
 export default function MobileFactory() {
+  const [dummy, setDummy] = useState([]);
+  const getData = e => {
+    e.preventDefault();
+    fetch(SlickData)
+      .then(res => setDummy(res))
+      .then(console.log(dummy));
+  };
+  const inputValue = useInput('');
   return (
     <MobileFactoryContainer className="mobile-factory">
-      <form action="/s/all">
+      <form
+        action="https://www.airbnb.co.kr/s/"
+        method="POST"
+        onSubmit={getData}
+      >
         <MobileLabel htmlFor="mobile-factory--input">
           <button type="submit">
             <RiZoomInLine
@@ -48,6 +45,9 @@ export default function MobileFactory() {
             autoComplete="off"
             autocorrect="off"
             id="mobile-factory--input"
+            onChange={useInput}
+            value={inputValue.value}
+            onChange={inputValue.onChange}
           />
         </MobileLabel>
       </form>
