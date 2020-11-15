@@ -14,7 +14,7 @@ const getAPI = value => {
       children: 0,
       infants: 0,
     },
-  }).then(res => peace.push(...res));
+  }).then(res => peace.push({ ...res }));
   return peace;
 };
 
