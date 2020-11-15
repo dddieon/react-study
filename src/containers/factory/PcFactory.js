@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { RiZoomInLine } from 'react-icons/ri';
 import Calendar from 'react-calendar';
+import { useHistory } from 'react-router-dom';
 // components
 import PcFactoryContainer from './PcFactoryContainer';
 import PcInput from './PcInput';
@@ -31,6 +32,8 @@ export default function PcFactory() {
   const where = useInput('');
   const [checkIn, setCheckIn] = useState(null);
   const guest = useInput('');
+  // history
+  const history = useHistory();
   // 달력이 표시될지 여부
   const [visibleCalendar, setVisibleCalendar] = useState(false);
   // 달력 클릭 이벤트
@@ -50,9 +53,17 @@ export default function PcFactory() {
       console.log(event.target);
     }
   };
+  const onSubmit = e => {
+    alert(`${where.value}를 검색합니다`);
+    e.preventDefault();
+    history.push({
+      pathname: `/s/${where.value}/homes`,
+      //search: '?checkin=2020-11-16&checkout=2020-11-20&adults=2',
+    });
+  };
   return (
     <PcFactoryContainer className="pc-factory" onClick={onClick}>
-      <form action="/s/all" className="pc-form">
+      <form className="pc-form" onSubmit={onSubmit}>
         <div style={{ paddingLeft: 16 }}>
           <label htmlFor="pc-factory--input_1">
             <div>위치</div>

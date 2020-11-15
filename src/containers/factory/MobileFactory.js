@@ -1,8 +1,6 @@
 import React from 'react';
 import { RiZoomInLine } from 'react-icons/ri';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
-import { connect } from 'react-redux';
 // components
 import MobileFactoryContainer from './MobileFactoryContainer';
 import MobileInput from './MobileInput';
@@ -16,19 +14,6 @@ function MobileFactory() {
   const onSubmit = e => {
     alert(`${inputValue.value}를 검색합니다`);
     e.preventDefault();
-    axios({
-      method: 'post',
-      url: 'https://pure-chamber-23730.herokuapp.com/api/',
-      headers: {},
-      data: {
-        area: inputValue.value,
-        checkin: '2020-11-16',
-        checkout: '2020-11-20',
-        adults: 2,
-        children: 0,
-        infants: 0,
-      },
-    }).then(res => console.log(res.data.data));
     history.push({
       pathname: `/s/${inputValue.value}/homes`,
       //search: '?checkin=2020-11-16&checkout=2020-11-20&adults=2',

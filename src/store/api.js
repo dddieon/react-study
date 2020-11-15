@@ -18,7 +18,6 @@ const UserStore = props => {
     },
   })
     .then(res => {
-      console.log(res.data.data);
       return res.data.data;
     })
     .catch(error => console.log(error));
