@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 function Search({ match }) {
   const location = useLocation();
-  console.log(location.search);
   return (
     <>
       <h1>검색 페이지</h1>

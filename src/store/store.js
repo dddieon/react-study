@@ -1,20 +1,51 @@
-// redux 설정을 시도하기 위한 dummy입니다
-
 import { createStore } from 'redux';
+import axios from 'axios';
 
-const play = 'play';
+const GET_API = 'GET_API';
+const COME = 'COME';
+const GET_SUCCESS = 'GET_SUCCESS';
+const GET_FAILURE = 'GET_FAILURE';
 
-export const doIt = text => {
+export const datas = dispatch => {
+  try {
+    const response = axios({
+      method: 'post',
+      url: 'https://pure-chamber-23730.herokuapp.com/api/',
+      headers: {},
+      data: {
+        area: '서울',
+        checkin: '2020-11-16',
+        checkout: '2020-11-20',
+        adults: 2,
+        children: 0,
+        infants: 0,
+      },
+    }).then(res => dispatch({ type: GET_SUCCESS, payload: { res } }));
+  } catch (e) {
+    dispatch({ type: GET_FAILURE });
+  }
+};
+
+export const dataToStore = data => {
   return {
-    type: play,
-    text,
+    type: GET_API,
+    data,
+  };
+};
+
+export const getFromStore = data => {
+  return {
+    type: COME,
+    data,
   };
 };
 
 const reducer = (state = [], action) => {
   switch (action.type) {
-    case play:
-      return [{ text: action.text, ...state }];
+    case GET_API:
+      return [{ data: action.data, ...state }];
+    case COME:
+      return [{ ...state }];
     default:
       return state;
   }

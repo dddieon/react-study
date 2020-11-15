@@ -1,31 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { RiZoomInLine } from 'react-icons/ri';
+import Calendar from 'react-calendar';
+// components
+import PcFactoryContainer from './PcFactoryContainer';
+import PcInput from './PcInput';
+// hooks
+import useInput from '../../util/hooks/useInput';
 
-const PcFactoryContainer = styled.div`
-  display: none;
-  background: #fefefe;
-  border-radius: 34px;
-  max-width: 850px;
-  margin: 0 auto;
-  padding: 10px;
-  font-size: 14px;
-  position: relative;
-  form {
-    display: flex;
-    div {
-      flex: 1;
-    }
-  }
-`;
-
-const PcInput = styled.input`
-  cursor: pointer;
-`;
-
-const PcLabel = styled.label``;
-
-const Calander = styled.div`
+const CalendarContainer = styled.div`
   display: block;
   position: absolute;
   background: #fff;
@@ -35,18 +18,35 @@ const Calander = styled.div`
   top: 100%;
   margin-top: 12px;
   border-radius: 32px;
+  .react-calendar__viewContainer {
+    display: flex;
+  }
+  .react-calendar__navigation__label {
+    display: flex;
+    justify-content: space-around;
+  }
 `;
-
 export default function PcFactory() {
-  const [visibleCalander, SetVisibleCalander] = useState(false);
+  // input value state
+  const where = useInput('');
+  const [checkIn, setCheckIn] = useState(null);
+  const guest = useInput('');
+  // 달력이 표시될지 여부
+  const [visibleCalendar, setVisibleCalendar] = useState(false);
+  // 달력 클릭 이벤트
   const onClick = event => {
     const {
-      target: { name },
+      target: { name, type },
     } = event;
-    if (name === 'openCalander') {
-      SetVisibleCalander(true);
+    if (name === 'openCalendar' || type === 'button') {
+      setVisibleCalendar(true);
+    } else if (event.target.classList.contains('react-calendar__tile')) {
+      setVisibleCalendar(true);
+      setCheckIn(event.target.children[0].getAttribute('aria-label'));
+    } else if (event.target.hasAttribute('aria-label')) {
+      setCheckIn(event.target.getAttribute('aria-label'));
     } else {
-      SetVisibleCalander(false);
+      setVisibleCalendar(false);
       console.log(event.target);
     }
   };
@@ -54,7 +54,7 @@ export default function PcFactory() {
     <PcFactoryContainer className="pc-factory" onClick={onClick}>
       <form action="/s/all" className="pc-form">
         <div style={{ paddingLeft: 16 }}>
-          <PcLabel htmlFor="pc-factory--input_1">
+          <label htmlFor="pc-factory--input_1">
             <div>위치</div>
             <PcInput
               type="text"
@@ -62,11 +62,13 @@ export default function PcFactory() {
               autoComplete="off"
               autocorrect="off"
               id="pc-factory--input_1"
+              value={where.value}
+              onChange={where.onChange}
             />
-          </PcLabel>
+          </label>
         </div>
         <div>
-          <PcLabel htmlFor="pc-factory--input_2">
+          <label htmlFor="pc-factory--input_2">
             <div>체크인</div>
             <PcInput
               type="text"
@@ -74,12 +76,13 @@ export default function PcFactory() {
               autoComplete="off"
               autocorrect="off"
               id="pc-factory--input_2"
-              name="openCalander"
+              name="openCalendar"
+              value={checkIn}
             />
-          </PcLabel>
+          </label>
         </div>
         <div>
-          <PcLabel htmlFor="pc-factory--input_3">
+          <label htmlFor="pc-factory--input_3">
             <div>체크아웃</div>
             <PcInput
               type="text"
@@ -87,12 +90,12 @@ export default function PcFactory() {
               autoComplete="off"
               autocorrect="off"
               id="pc-factory--input_3"
-              name="openCalander"
+              name="openCalendar"
             />
-          </PcLabel>
+          </label>
         </div>
         <div style={{ display: 'flex' }}>
-          <PcLabel htmlFor="pc-factory--input_4" style={{ flex: 1 }}>
+          <label htmlFor="pc-factory--input_4" style={{ flex: 1 }}>
             <div>인원</div>
             <PcInput
               type="text"
@@ -101,8 +104,9 @@ export default function PcFactory() {
               autocorrect="off"
               id="pc-factory--input_4"
               size={8}
+              value={guest.value}
             />
-          </PcLabel>
+          </label>
           <button type="submit">
             <RiZoomInLine
               style={{
@@ -117,7 +121,11 @@ export default function PcFactory() {
           </button>
         </div>
       </form>
-      {visibleCalander && <Calander className="calander">달력</Calander>}
+      {visibleCalendar && (
+        <CalendarContainer id="react-calendar-container">
+          <Calendar showDoubleView={true}></Calendar>
+        </CalendarContainer>
+      )}
     </PcFactoryContainer>
   );
 }
